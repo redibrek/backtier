@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddcontact(name="addcontact",method="post",action="/contacts")
+        p First Name: 
+            input#inputFname(type="text", placeholder="ex. John", name="fname")
+        p Last Name: 
+            input#inputLname(type="text", placeholder="ex. Smith", name="lname")
+        p Email Address: 
+            input#inputEmail(type="text", placeholder="ex. John.Smith@email.com", name="email")
+        p Telephone Number: 
+            input#inputPhone(type="text", placeholder="ex. +44 7781 711811", name="phone")
+        p Organisation Name: 
+            input#inputOrganisation(type="text", placeholder="ex. Acme corp", name="organisation")      
+        p
+            button#btnSubmit(type="submit") submit

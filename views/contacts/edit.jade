@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1.
+        contact ID #{contact._id}
+    form(action='/contacts/#{contact._id}/edit',method='post',name='updatecontact',enctype='application/x-www-form-urlencoded')
+        p First Name: 
+            input#inputFname(type="text", placeholder="#{contact.fname}", name="fname")
+        p Last Name: 
+            input#inputLname(type="text", placeholder="#{contact.lname}", name="lname")
+        p Email Address: 
+            input#inputEmail(type="text", placeholder="#{contact.email}", name="email")
+        p Telephone Number: 
+            input#inputPhone(type="text", placeholder="#{contact.phone}", name="phone")
+        p Organisation Name: 
+            input#inputOrganisation(type="text", placeholder="#{contact.organisation}", name="organisation")  
+        p 
+            input(type='hidden',value='PUT',name='_method')
+        p 
+            button#btnSubmit(type='submit').
+                Update
