@@ -5,17 +5,18 @@ block content
         contact ID #{contact._id}
     form(action='/contacts/#{contact._id}/edit',method='post',name='updatecontact',enctype='application/x-www-form-urlencoded')
         p First Name: 
-            input#inputFname(type="text", placeholder="#{contact.fname}", name="fname")
+            input#inputFname(type="text", Value="#{contact.fname}", name="fname")
         p Last Name: 
-            input#inputLname(type="text", placeholder="#{contact.lname}", name="lname")
+            input#inputLname(type="text", Value="#{contact.lname}", name="lname")
         p Email Address: 
-            input#inputEmail(type="text", placeholder="#{contact.email}", name="email")
+            input#inputEmail(type="email", Value="#{contact.email}", name="email")
         p Telephone Number: 
-            input#inputPhone(type="text", placeholder="#{contact.phone}", name="phone")
+            input#inputPhone(type="text", Value="#{contact.phone}", name="phone")
         p Organisation Name: 
-            input#inputOrganisation(type="text", placeholder="#{contact.organisation}", name="organisation")  
+            input#inputOrganisation(type="text", Value="#{contact.organisation}", name="organisation")  
         p 
             input(type='hidden',value='PUT',name='_method')
         p 
             button#btnSubmit(type='submit').
                 Update
+                

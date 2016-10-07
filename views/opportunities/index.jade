@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1.
+         #{title}
+    ul
+        - each opportunity, i in opportunities
+            li
+                = opportunity.oppname
+                = opportunity.description
+                = opportunity.orgname
+                = opportunity.primarycontactname
+                = opportunity._id
+                form(action='/opportunities/#{opportunity._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+                    input(type='hidden',value='DELETE',name='_method')
+                    button(type='submit').
+                        Delete
+                p 
+                    a(href='/opportunities/#{opportunity._id}/edit') Edit
+                p
+                    a(href='/opportunities/#{opportunity._id}') Show

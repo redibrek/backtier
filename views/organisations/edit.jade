@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h1.
+        organisation ID #{organisation._id}
+    form(action='/organisations/#{organisation._id}/edit',method='post',name='updateorganisation',enctype='application/x-www-form-urlencoded')
+        p Organisation Name: 
+            input#inputOrgname(type="text", Value="#{organisation.orgname}", name="orgname")
+        p Address Line 1: 
+            input#inputAddressLine1(type="text", Value="#{organisation.addressLine1}", name="addressLine1")
+        p Address Line 2: 
+            input#inputAddressLine2(type="text", Value="#{organisation.addressLine2}", name="addressLine2")
+        p City: 
+            input#inputCity(type="text", Value="#{organisation.city}", name="city")
+        p State / Province: 
+            input#inputState(type="text", Value="#{organisation.state}", name="state")  
+        p Zip or Postal Code: 
+            input#inputZip(type="text", Value="#{organisation.zip}", name="zip")  
+        p 
+            input(type='hidden',value='PUT',name='_method')
+        p 
+            button#btnSubmit(type='submit').
+                Update

@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddorganisation(name="addorganisation",method="post",action="/organisations")
+        p Organisation Name: 
+            input#inputOrgname(type="text", placeholder="e.g. First Org", name="orgname")
+        p Address Line 1: 
+            input#inputAddressLine1(type="text", placeholder="e.g. 1st Street", name="addressLine1")
+        p Address Line 2: 
+            input#inputAddressLine2(type="text", placeholder="", name="addressLine1")
+        p City: 
+            input#inputCity(type="text", placeholder="e.g. Metrolopolis", name="city")
+        p State / Province: 
+            input#inputState(type="text", placeholder="e.g. Comicsville", name="state")  
+        p Zip or Postal Code: 
+            input#inputZip(type="text", placeholder="e.g AB12345", name="zip")     
+        p
+            button#btnSubmit(type="submit") submit

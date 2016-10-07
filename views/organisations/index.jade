@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h1.
+         #{title}
+    ul
+        - each organisation, i in organisations
+            li
+                = organisation.orgname
+                = organisation.addressLine1
+                = organisation.addressLine2
+                = organisation.city
+                = organisation.state
+                = organisation.zip
+                = organisation._id
+                form(action='/organisations/#{organisation._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+                    input(type='hidden',value='DELETE',name='_method')
+                    button(type='submit').
+                        Delete
+                p 
+                    a(href='/organisations/#{organisation._id}/edit') Edit
+                p
+                    a(href='/organisations/#{organisation._id}') Show

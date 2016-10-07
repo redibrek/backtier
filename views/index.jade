@@ -1,5 +1,45 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h3 Current Contacts:
+  p 
+    ul
+      each contact in contacts
+        li
+          a(href='/contacts/#{contact._id}')
+            = contact.fname
+            = '\n'
+            = contact.lname
+            = '\n'
+            | at 
+            = '\n'
+            = contact.organisation
+  
+  h3 Current Organisations:
+  p 
+    ul
+      each organisation in organisations
+        li
+          a(href='/organisations/#{organisation._id}')
+            = organisation.orgname
+
+
+  h3 Current Opportunities
+  p
+  ul
+      each opportunity, i in opportunities
+        li
+          a(href='/opportunities/#{opportunity._id}')
+              = opportunity.oppname
+              
+  h3 Testing        
+  p
+  .dropdown
+      a(href="#", data-toggle="dropdown").dropdown-toggle Organisations
+      ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
+        each organisation in organisations
+          li
+            a(href='/organisations/#{organisation._id}')
+              = organisation.orgname
+  script.
+      $('.dropdown-toggle').dropdown()

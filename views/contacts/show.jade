@@ -9,3 +9,6 @@ block content
     p Telephone Number: #{contact.phone}
     p Organisation: #{contact.organisation}
     p Unique ID: #{contact._id}
+
+    p 
+        a(href='/contacts/#{contact._id}/edit') Edit
