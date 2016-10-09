@@ -1,23 +1,47 @@
 extends ../layout
 
 block content
-    h1.
-        organisation ID #{organisation._id}
-    form(action='/organisations/#{organisation._id}/edit',method='post',name='updateorganisation',enctype='application/x-www-form-urlencoded')
-        p Organisation Name: 
-            input#inputOrgname(type="text", Value="#{organisation.orgname}", name="orgname")
-        p Address Line 1: 
-            input#inputAddressLine1(type="text", Value="#{organisation.addressLine1}", name="addressLine1")
-        p Address Line 2: 
-            input#inputAddressLine2(type="text", Value="#{organisation.addressLine2}", name="addressLine2")
-        p City: 
-            input#inputCity(type="text", Value="#{organisation.city}", name="city")
-        p State / Province: 
-            input#inputState(type="text", Value="#{organisation.state}", name="state")  
-        p Zip or Postal Code: 
-            input#inputZip(type="text", Value="#{organisation.zip}", name="zip")  
-        p 
-            input(type='hidden',value='PUT',name='_method')
-        p 
-            button#btnSubmit(type='submit').
-                Update
+    h1  Edit Organisation
+    
+    form#formUpdateOrganisation.form-horizontal(action='/organisations/#{organisation._id}/edit',method='post',name='updateorganisation', novalidate, enctype='application/x-www-form-urlencoded')
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Organisation ID: #{organisation._id}
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='orgname') Organisation Name:
+            .col-sm-10
+              input#orgname.form-control(type='text', Value='#{organisation.orgname}', Name='orgname', required, data-required-msg='Organisation name is required')
+          .form-group
+            label.control-label.col-sm-2(for='addressLine1') Address Line 1:
+            .col-sm-10
+              input#addressLine1.form-control(type='text', Value='#{organisation.addressLine1}', Name='addressLine1', required, data-required-msg='Address Line 1 is required')
+          .form-group
+            label.control-label.col-sm-2(for='addressLine2') Address Line 2
+            .col-sm-10
+              input#addressLine2.form-control(type='text', Value='#{organisation.addressLine2}', Name='addressLine2')
+          .form-group
+            label.control-label.col-sm-2(for='city') City:
+            .col-sm-10
+              input#city.form-control(type='text', Value='#{organisation.city}', Name='city', required, data-required-msg='City is required')
+          .form-group
+            label.control-label.col-sm-2(for='state') State:
+            .col-sm-10
+              input#state.form-control(type='text', Value='#{organisation.state}', Name='state', required, data-required-msg='State is required')
+          .form-group
+            label.control-label.col-sm-2(for='zip') Post Code:
+            .col-sm-10
+              input#zip.form-control(type='text', Value='#{organisation.zip}', Name='zip', required, data-required-msg='Post Code is required')
+        .panel-footer
+          .btn-group
+            form(action='/organisations/#{organisation._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='PUT',name='_method')
+              button.btn.btn-default(type='submit') Update
+          .btn-group.pull-right
+            form(action='/organisations/#{organisation._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='DELETE',name='_method')
+              button.btn.btn-danger(type='submit') Delete
+              
+    script
+        $('#formUpdateOrganisation').kendoValidator({
+        });

@@ -31,15 +31,3 @@ block content
         li
           a(href='/opportunities/#{opportunity._id}')
               = opportunity.oppname
-              
-  h3 Testing        
-  p
-  .dropdown
-      a(href="#", data-toggle="dropdown").dropdown-toggle Organisations
-      ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu')
-        each organisation in organisations
-          li
-            a(href='/organisations/#{organisation._id}')
-              = organisation.orgname
-  script.
-      $('.dropdown-toggle').dropdown()

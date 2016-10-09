@@ -1,22 +1,48 @@
 extends ../layout
 
 block content
-    h1.
-        contact ID #{contact._id}
-    form(action='/contacts/#{contact._id}/edit',method='post',name='updatecontact',enctype='application/x-www-form-urlencoded')
-        p First Name: 
-            input#inputFname(type="text", Value="#{contact.fname}", name="fname")
-        p Last Name: 
-            input#inputLname(type="text", Value="#{contact.lname}", name="lname")
-        p Email Address: 
-            input#inputEmail(type="email", Value="#{contact.email}", name="email")
-        p Telephone Number: 
-            input#inputPhone(type="text", Value="#{contact.phone}", name="phone")
-        p Organisation Name: 
-            input#inputOrganisation(type="text", Value="#{contact.organisation}", name="organisation")  
-        p 
-            input(type='hidden',value='PUT',name='_method')
-        p 
-            button#btnSubmit(type='submit').
-                Update
-                
+    h1 Edit Contact
+        
+    form#formUpdateContact.form-horizontal(action='/contacts/#{contact._id}/edit', method='post', name='updatecontact', novalidate, enctype='application/x-www-form-urlencoded')
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Contact ID: #{contact._id}
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='fname') First Name:
+            .col-sm-10
+              input#fname.form-control(type='text', Value='#{contact.fname}', Name='fname', required, data-required-msg='First Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='lname') Last Name:
+            .col-sm-10
+              input#lname.form-control(type='text', Value='#{contact.lname}', Name='lname', required, data-required-msg='Last Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='email') Email Address
+            .col-sm-10
+              input#email.form-control(type='email', Value='#{contact.email}', Name='email', required, data-required-msg='Email Address is required')
+          .form-group
+            label.control-label.col-sm-2(for='phone') Phone Number:
+            .col-sm-10
+              input#phone.form-control(type='text', Value='#{contact.phone}', Name='phone', required, data-required-msg='Phone Number is required')
+          .form-group
+            label.control-label.col-sm-2(for='organisation') Organisation:
+            .col-sm-10
+              select#organisation.form-control(name='organisation', value='#{contact.organisation}')
+                each organisation in organisations
+                  if '#{organisation.orgname}' == '#{contact.organisation}'
+                    option(selected='selected') #{organisation.orgname}  
+                  else
+                    option #{organisation.orgname}  
+        .panel-footer
+          .btn-group
+            form(action='/contacts/#{contact._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='PUT',name='_method')
+              button.btn.btn-default(type='submit') Update
+          .btn-group.pull-right
+            form(action='/contacts/#{contact._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='DELETE',name='_method')
+              button.btn.btn-danger(type='submit') Delete
+              
+    script
+        $('#formUpdateContact').kendoValidator({
+        });

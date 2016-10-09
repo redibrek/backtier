@@ -1,29 +1,35 @@
 extends ../layout
 
 block content
-    h1.
-         #{title}
+    h2 #{title}   
+      .btn-group.pull-right
+            button.btn.btn-default(type='button', onclick="location.href='/contacts/new';") New Contact      
     ul.list-group
         - each contact, i in contacts
-            li.list-group-item
-                | Name: 
-                = contact.fname
-                | 
-                = contact.lname
-                br 
-                | Email Address: 
-                = contact.email
-                br
-                | Phone: 
-                = contact.phone
-                br
-                | Organisation: 
-                = contact.organisation
-                p                
+            .panel.panel-primary
+              .panel-heading
+                h3.panel-title  
+                  = contact.fname
+                  | 
+                  = contact.lname
+              .panel-body            
+                label.control-label.col-sm-2(for='email') Email Address:
+                .col-sm-10
+                p #{contact.email}
+                label.control-label.col-sm-2(for='email') Telephone Number:
+                .col-sm-10
+                p #{contact.phone}
+                label.control-label.col-sm-2(for='email') Organisation:
+                .col-sm-10
+                p #{contact.organisation}
+                label.control-label.col-sm-2(for='email') Unique ID:
+                .col-sm-10
+                p #{contact._id}
+              .panel-footer                
                 .btn-group(role='group', aria-label='...')
-                  button.btn.btn-default(type='button', onclick="location.href='/contacts/#{contact._id}';", value='Go to Google') Detail
-                  button.btn.btn-default(type='button', onclick="location.href='/contacts/#{contact._id}/edit';", value='Go to Google') Edit
-                .btn
+                  button.btn.btn-default(type='button', onclick="location.href='/contacts/#{contact._id}';") Detail
+                  button.btn.btn-default(type='button', onclick="location.href='/contacts/#{contact._id}/edit';") Edit
+                .btn-group.pull-right
                   form(action='/contacts/#{contact._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
                     input(type='hidden',value='DELETE',name='_method')
-                    button.btn.btn-default(type='submit') Delete
+                    button.btn.btn-danger(type='submit') Delete

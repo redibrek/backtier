@@ -1,14 +1,29 @@
 extends ../layout
 
 block content
-    h1 Contact Information
-    
-    p First Name: #{contact.fname}
-    p Last Name: #{contact.lname}
-    p Email Address: #{contact.email}
-    p Telephone Number: #{contact.phone}
-    p Organisation: #{contact.organisation}
-    p Unique ID: #{contact._id}
+    h1 Contact Details
 
-    p 
-        a(href='/contacts/#{contact._id}/edit') Edit
+    .panel.panel-primary
+      .panel-heading  
+        h3.panel-title #{contact.fname} #{contact.lname}
+      .panel-body    
+        label.control-label.col-sm-2 Email Address:
+        .col-sm-10
+        p #{contact.email}
+        label.control-label.col-sm-2 Telephone Number:
+        .col-sm-10
+        p #{contact.phone}
+        label.control-label.col-sm-2 Organisation:
+        .col-sm-10
+        p #{contact.organisation}
+        label.control-label.col-sm-2 Unique ID:
+        .col-sm-10
+        p #{contact._id}
+      .panel-footer
+        .btn-group(role='group', aria-label='...')
+          button.btn.btn-default(type='button', onclick="location.href='/contacts';") Show All
+          button.btn.btn-default(type='button', onclick="location.href='/contacts/#{contact._id}/edit';") Edit
+        .btn-group.pull-right
+          form(action='/contacts/#{contact._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+            input(type='hidden',value='DELETE',name='_method')
+            button.btn.btn-danger(type='submit') Delete

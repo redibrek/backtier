@@ -1,12 +1,34 @@
 extends ../layout
 
 block content
-    h1 organisation Information
-    
-    p Organsiation Name: #{organisation.orgname}
-    p Address Line 1: #{organisation.addressLine1}
-    p Address Line 2: #{organisation.addressLine2}
-    p City: #{organisation.city}
-    p State: #{organisation.state}
-    p Zip: #{organisation.zip}
-    p Unique ID: #{organisation._id}
+    h1 Organisation Details
+    .panel.panel-primary
+      .panel-heading  
+        h3.panel-title #{organisation.orgname}
+      .panel-body    
+        label.control-label.col-sm-2 Address Line 1:
+        .col-sm-10
+        p #{organisation.addressLine1}
+        label.control-label.col-sm-2 Address Line 2:
+        .col-sm-10
+        p #{organisation.addressLine2}
+        label.control-label.col-sm-2 City:
+        .col-sm-10
+        p #{organisation.city}
+        label.control-label.col-sm-2 State:
+        .col-sm-10
+        p #{organisation.state}
+        label.control-label.col-sm-2 Post Code:
+        .col-sm-10
+        p #{organisation.zip}
+        label.control-label.col-sm-2 Unique ID:
+        .col-sm-10
+        p #{organisation._id}
+      .panel-footer
+        .btn-group(role='group', aria-label='...')
+          button.btn.btn-default(type='button', onclick="location.href='/organisations';") Show All
+          button.btn.btn-default(type='button', onclick="location.href='/organisations/#{organisation._id}/edit';") Edit
+        .btn-group.pull-right
+          form(action='/organisations/#{organisation._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+            input(type='hidden',value='DELETE',name='_method')
+            button.btn.btn-danger(type='submit') Delete

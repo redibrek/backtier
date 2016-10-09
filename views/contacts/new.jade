@@ -1,18 +1,39 @@
 extends ../layout
 
 block content
-    h1.
-        #{title}
-    form#formAddcontact(name="addcontact",method="post",action="/contacts")
-        p First Name: 
-            input#inputFname(type="text", placeholder="ex. John", name="fname")
-        p Last Name: 
-            input#inputLname(type="text", placeholder="ex. Smith", name="lname")
-        p Email Address: 
-            input#inputEmail(type="email", placeholder="ex. John.Smith@email.com", name="email")
-        p Telephone Number: 
-            input#inputPhone(type="text", placeholder="ex. +44 7781 711811", name="phone")
-        p Organisation Name: 
-            input#inputOrganisation(type="text", placeholder="ex. Acme corp", name="organisation")      
-        p
-            button#btnSubmit(type="submit") submit
+    h1 New Contact Form
+    
+    form#formAddcontact.form-horizontal(name='addcontact', method='post', action='/contacts', novalidate)
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Contact Information
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='fname') First Name:
+            .col-sm-10
+              input#fname.form-control(type='text', placeholder='John', Name='fname', class='form-control', required, data-required-msg='First Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='lname') Last Name:
+            .col-sm-10
+              input#lname.form-control(type='text', placeholder='Smith', Name='lname', class='form-control', required, data-required-msg='Last Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='email') Email Address
+            .col-sm-10
+              input#email.form-control(type='email', placeholder='someone@email.com', Name='email', class='form-control', required, data-required-msg='Email address is required')
+          .form-group
+            label.control-label.col-sm-2(for='phone') Phone Number:
+            .col-sm-10
+              input#phone.form-control(type='text', placeholder='+44 1234 123456', Name='phone', class='form-control', required, data-required-msg='Phone Number is required')
+          .form-group
+            label.control-label.col-sm-2(for='organisation') Organisation:
+            .col-sm-10
+              select#organisation.form-control(name='organisation')
+                each organisation in organisations
+                  option #{organisation.orgname}  
+        .panel-footer
+          .btn-group
+              button.btn.btn-default(type='submit') Create
+
+    script
+        $('#formAddcontact').kendoValidator({
+        });

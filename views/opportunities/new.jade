@@ -3,14 +3,14 @@ extends ../layout
 block content
     h1.
         #{title}
-    form#formAddopportunity(name="addopportunity",method="post",action="/opportunities")
+    form#formAddopportunity(name='addopportunity',method='post',action='/opportunities')
         p Opportunity Name: 
-            input#inputOppname(type="text", placeholder="e.g. Licence Deal 1", name="oppname")
+            input#inputOppname(type='text', placeholder='e.g. Licence Deal 1', name='oppname')
         p Description: 
-            textarea#inputDescription(rows="4", placeholder="e.g. Some detail here about the opportunity", name="description")
+            textarea#inputDescription(rows='4', placeholder='e.g. Some detail here about the opportunity', name='description')
         p Organisation Name: 
-            input#inputOrgname(type="text", placeholder="", name="orgname")
+            input#inputOrgname(type='text', placeholder='', name='orgname')
         p Primary Contact: 
-            input#inputPrimaryContactName(type="text", placeholder="e.g. Metrolopolis", name="primarycontactname")
+            input#inputPrimaryContactName(type='text', placeholder='e.g. Metrolopolis', name='primarycontactname')
         p
-            button#btnSubmit(type="submit") submit
+            button#btnSubmit(type='submit') submit

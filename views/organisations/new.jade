@@ -1,20 +1,41 @@
 extends ../layout
 
 block content
-    h1.
-        #{title}
-    form#formAddorganisation(name="addorganisation",method="post",action="/organisations")
-        p Organisation Name: 
-            input#inputOrgname(type="text", placeholder="e.g. First Org", name="orgname")
-        p Address Line 1: 
-            input#inputAddressLine1(type="text", placeholder="e.g. 1st Street", name="addressLine1")
-        p Address Line 2: 
-            input#inputAddressLine2(type="text", placeholder="", name="addressLine1")
-        p City: 
-            input#inputCity(type="text", placeholder="e.g. Metrolopolis", name="city")
-        p State / Province: 
-            input#inputState(type="text", placeholder="e.g. Comicsville", name="state")  
-        p Zip or Postal Code: 
-            input#inputZip(type="text", placeholder="e.g AB12345", name="zip")     
-        p
-            button#btnSubmit(type="submit") submit
+    h1  New Organisation Form
+    
+    form#formCreateOrganisation.form-horizontal(name='addorganisation', method='post', action='/organisations', novalidate)
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Organisation Information
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='orgname') Organisation Name:
+            .col-sm-10
+              input#orgname.form-control(type='text', placeholder='First Org', Name='orgname', required, data-required-msg='Organisation name is required')
+          .form-group
+            label.control-label.col-sm-2(for='addressLine1') Address Line 1:
+            .col-sm-10
+              input#addressLine1.form-control(type='text', placeholder='1st Street', Name='addressLine1', required, data-required-msg='Address Line 1 is required')
+          .form-group
+            label.control-label.col-sm-2(for='addressLine2') Address Line 2
+            .col-sm-10
+              input#addressLine2.form-control(type='text', placeholder='2nd Stret', Name='addressLine2')
+          .form-group
+            label.control-label.col-sm-2(for='city') City:
+            .col-sm-10
+              input#city.form-control(type='text', Name='city', placeholder='Cityville', required, data-required-msg='City is required')
+          .form-group
+            label.control-label.col-sm-2(for='state') State:
+            .col-sm-10
+              input#state.form-control(type='text', Name='state', placeholder='Stateshire', required, data-required-msg='State is required')
+          .form-group
+            label.control-label.col-sm-2(for='zip') Post Code:
+            .col-sm-10
+              input#zip.form-control(type='text', Name='zip', placeholder='AB12 3BA', required, data-required-msg='Post Code is required')
+        .panel-footer
+          .btn-group
+            button.btn.btn-default(type='submit') Create
+              
+    script
+        $('#formCreateOrganisation').kendoValidator({
+        });
