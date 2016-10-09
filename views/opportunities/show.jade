@@ -1,10 +1,29 @@
 extends ../layout
 
 block content
-    h1 opportunity Information
-    
-    p Opportunity Name: #{opportunity.oppname}
-    p Description: #{opportunity.description}
-    p Organsiation Name: #{opportunity.orgname}
-    p Primary Contact: #{opportunity.primarycontactname}
-    p Unique ID: #{opportunity._id}
+    h2 Opportunity Details
+
+    .panel.panel-primary
+      .panel-heading  
+        h3.panel-title #{opportunity.oppname}
+      .panel-body    
+        label.control-label.col-sm-2 Description:
+        .col-sm-10
+        p #{opportunity.description}
+        label.control-label.col-sm-2 Orgname:
+        .col-sm-10
+        p #{opportunity.orgname}
+        label.control-label.col-sm-2 Primary Contact:
+        .col-sm-10
+        p #{opportunity.primarycontactname}
+        label.control-label.col-sm-2 Opportunity ID:
+        .col-sm-10
+        p #{opportunity._id}
+      .panel-footer
+        .btn-group(role='group', aria-label='...')
+          button.btn.btn-default(type='button', onclick="location.href='/opportunities';") Show All
+          button.btn.btn-default(type='button', onclick="location.href='/opportunities/#{opportunity._id}/edit';") Edit
+        .btn-group.pull-right
+          form(action='/opportunities/#{opportunity._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+            input(type='hidden',value='DELETE',name='_method')
+            button.btn.btn-danger(type='submit') Delete

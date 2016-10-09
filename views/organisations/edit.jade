@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1  Edit Organisation
+    h2 Edit Organisation
     
     form#formUpdateOrganisation.form-horizontal(action='/organisations/#{organisation._id}/edit',method='post',name='updateorganisation', novalidate, enctype='application/x-www-form-urlencoded')
       .panel.panel-primary

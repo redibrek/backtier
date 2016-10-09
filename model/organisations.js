@@ -1,14 +1,16 @@
-/*jshint esversion: 6 */
+// Defines the schema for the Organisations model
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var organisationSchema = new mongoose.Schema({
-	orgname: 'string',
-	addressLine1: 'string',
-	addressLine2: 'string',
+  orgname: 'string',
+  addressLine1: 'string',
+  addressLine2: 'string',
   city: 'string',
   state: 'string',
-  zip: 'string'
-});
+  zip: 'string',
+  creationDate: 'date',
+  lastUpdatedDate: 'date'
+})
 
-mongoose.model('organisation',organisationSchema);
+mongoose.model('organisation', organisationSchema)

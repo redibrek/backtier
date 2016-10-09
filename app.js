@@ -1,19 +1,22 @@
-/* jshint esversion: 6 */
-
+// Declares standard variables for Express
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
+// Registers the datastore schemas in Express
 var db = require('./model/db')
 var contact = require('./model/contacts')
 var organisation = require('./model/organisations')
 var opportunity = require('./model/opportunities')
+var roimodel = require('./model/roimodels')
+// Registers the routes to be used by Express
 var routes = require('./routes/index')
 var contacts = require('./routes/contacts')
 var organisations = require('./routes/organisations')
 var opportunities = require('./routes/opportunities')
+var roimodels = require('./routes/roimodels')
 var users = require('./routes/users')
 
 var app = express()
@@ -35,6 +38,7 @@ app.use('/users', users)
 app.use('/contacts', contacts)
 app.use('/organisations', organisations)
 app.use('/opportunities', opportunities)
+app.use('/roimodels', roimodels)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,16 +1,33 @@
-extends ../layout
+extends ../layout 
 
 block content
-    h1.
-        #{title}
-    form#formAddopportunity(name='addopportunity',method='post',action='/opportunities')
-        p Opportunity Name: 
-            input#inputOppname(type='text', placeholder='e.g. Licence Deal 1', name='oppname')
-        p Description: 
-            textarea#inputDescription(rows='4', placeholder='e.g. Some detail here about the opportunity', name='description')
-        p Organisation Name: 
-            input#inputOrgname(type='text', placeholder='', name='orgname')
-        p Primary Contact: 
-            input#inputPrimaryContactName(type='text', placeholder='e.g. Metrolopolis', name='primarycontactname')
-        p
-            button#btnSubmit(type='submit') submit
+    h2 New Opportunity Form
+  
+    form#formAddopportunity.form-horizontal(name='addopportunity', method='post', action='/opportunities', novalidate)
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Opportunity Information
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='oppname') Opportunity Name:
+            .col-sm-10
+              input#fname.form-control(type='text', placeholder='e.g. Licence Deal', Name='oppname', class='form-control', required, data-required-msg='First Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='description') Description:
+            .col-sm-10
+              textarea#lname.form-control(type='textarea', placeholder='enter some detail about the opportunity', Name='description', class='form-control', required, data-required-msg='Last Name is required')
+          .form-group
+            label.control-label.col-sm-2(for='orgname') Organisation
+            .col-sm-10
+              input#email.form-control(type='text', placeholder='someone@email.com', Name='orgname', class='form-control', required, data-required-msg='Email address is required')
+          .form-group
+            label.control-label.col-sm-2(for='primarycontactname') Primary Contact:
+            .col-sm-10
+              input#phone.form-control(type='text', Name='primarycontactname', class='form-control', required, data-required-msg='Phone Number is required')
+        .panel-footer
+          .btn-group
+              button.btn.btn-default(type='submit') Create
+
+    script
+        $('#formAddopportunity').kendoValidator({
+        });

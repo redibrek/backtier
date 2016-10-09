@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1 Edit Contact
+    h2 Edit Contact
         
     form#formUpdateContact.form-horizontal(action='/contacts/#{contact._id}/edit', method='post', name='updatecontact', novalidate, enctype='application/x-www-form-urlencoded')
       .panel.panel-primary

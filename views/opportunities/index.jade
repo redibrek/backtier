@@ -1,15 +1,15 @@
 extends ../layout
 
 block content
-    h2 #{title}   
+    h2 Opportunities Summary   
       .btn-group.pull-right
             button.btn.btn-default(type='button', onclick="location.href='/opportunities/new';") New Opportunity      
     
     - each opportunity, i in opportunities
         .panel.panel-primary
           .panel-heading
-            h3.panel-title  
-              opportunity.oppname
+            h3.panel-title 
+              = opportunity.oppname
           .panel-body            
             label.control-label.col-sm-2(for='text') Opportunity Description:
             .col-sm-10
