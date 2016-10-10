@@ -94,11 +94,12 @@ block content
                       input#valueGCost.form-control(type='number', Value='#{roimodel.valueGCost}', Name='valueGCost', min='1')
                     td
                       input#valueGCdssReduction.form-control(type='number', Value='#{roimodel.valueGCdssReduction}', Name='valueGCdssReduction', min='1', max='100')
+                      input#lastUpdatedDate.form-control(type='hidden', Name='lastUpdatedDate')
         .panel-footer
           .btn-group
             form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='PUT',name='_method')
-              button.btn.btn-default(type='submit') Update
+              button.btn.btn-default(type='submit', onclick='myFunction(event)') Update
           .btn-group.pull-right
             form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='DELETE',name='_method')
@@ -107,3 +108,9 @@ block content
     script
         $('#formUpdateroimodel').kendoValidator({
         });
+
+    script.
+        function myFunction(event) {
+          var n = event.timeStamp;
+          document.getElementById('roimodel.lastUpdatedDate').value = n
+        }

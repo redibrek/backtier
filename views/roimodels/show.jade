@@ -1,29 +1,102 @@
 extends ../layout
 
 block content
-    h2 roimodel Details
+    h2 #{title}
+    
     .panel.panel-primary
       .panel-heading  
-        h3.panel-title #{roimodel.orgname}
+        h3.panel-title #{roimodel.name}
       .panel-body    
-        label.control-label.col-sm-2 Address Line 1:
-        .col-sm-10
-        p #{roimodel.addressLine1}
-        label.control-label.col-sm-2 Address Line 2:
-        .col-sm-10
-        p #{roimodel.addressLine2}
-        label.control-label.col-sm-2 City:
-        .col-sm-10
-        p #{roimodel.city}
-        label.control-label.col-sm-2 State:
-        .col-sm-10
-        p #{roimodel.state}
-        label.control-label.col-sm-2 Post Code:
-        .col-sm-10
-        p #{roimodel.zip}
-        label.control-label.col-sm-2 Unique ID:
-        .col-sm-10
-        p #{roimodel._id}
+        .form-group
+          p #{roimodel.description}
+          table.table.table-striped
+            thead
+              tr
+                th #
+                th Name
+                th Quantity
+                th Cost
+                th Reduction % Achieved with CDSS
+            tbody
+              tr
+                th(scope='row') 1
+                  td
+                    p #{roimodel.valueAName}
+                  td
+                    p #{roimodel.valueAQty}
+                  td
+                    p #{roimodel.valueACost}
+                  td
+                    p #{roimodel.valueACdssReduction}
+              tr
+                th(scope='row') 2
+                  td
+                    p #{roimodel.valueBName}
+                  td
+                    p #{roimodel.valueBQty}
+                  td
+                    p #{roimodel.valueBCost}
+                  td
+                    p #{roimodel.valueBCdssReduction}
+              tr
+                th(scope='row') 3
+                  td
+                    p #{roimodel.valueCName}
+                  td
+                    p #{roimodel.valueCQty}
+                  td
+                    p #{roimodel.valueCCost}
+                  td
+                    p #{roimodel.valueCCdssReduction}
+              tr
+                th(scope='row') 4
+                  td
+                    p #{roimodel.valueDName}
+                  td
+                    p #{roimodel.valueDQty}
+                  td
+                    p #{roimodel.valueDCost}
+                  td
+                    p #{roimodel.valueDCdssReduction}
+              tr
+                th(scope='row') 5
+                  td
+                    p #{roimodel.valueEName}
+                  td
+                    p #{roimodel.valueEQty}
+                  td
+                    p #{roimodel.valueECost}
+                  td
+                    p #{roimodel.valueECdssReduction}
+              tr
+                th(scope='row') 6
+                  td
+                    p #{roimodel.valueFName}
+                  td
+                    p #{roimodel.valueFQty}
+                  td
+                    p #{roimodel.valueFCost}
+                  td
+                    p #{roimodel.valueFCdssReduction}
+              tr
+                th(scope='row') 7
+                  td
+                    p #{roimodel.valueGName}
+                  td
+                    p #{roimodel.valueGQty}
+                  td
+                    p #{roimodel.valueGCost}
+                  td
+                    p #{roimodel.valueGCdssReduction} 
+          label.control-label.col-sm-2 Unique ID: 
+          .col-sm-10
+          p #{roimodel._id}
+          label.control-label.col-sm-2(for='creationDate') Creation Date:
+          .col-sm-10
+          p #{roimodel.creationDate}
+          label.control-label.col-sm-2(for='lastUpdatedDate') Last Updated Date:
+          .col-sm-10
+          p #{roimodel.lastUpdatedDate}
       .panel-footer
         .btn-group(role='group', aria-label='...')
           button.btn.btn-default(type='button', onclick="location.href='/roimodels';") Show All
@@ -32,3 +105,4 @@ block content
           form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
             input(type='hidden',value='DELETE',name='_method')
             button.btn.btn-danger(type='submit') Delete
+            

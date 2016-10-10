@@ -96,8 +96,8 @@ block content
                       input#valueGCdssReduction.form-control(type='number', placeholder='10', Name='valueGCdssReduction', min='1', max='100')
         .panel-footer
           .btn-group
-            button.btn.btn-default(type='submit') Create
-              
+            button.btn.btn-default(type='submit', onclick='this.form.timeField.value=getTimeStamp()') Create
+            input(type='hidden', name='creationDate')
     script
         $('#formCreateroimodel').kendoValidator({
         });
