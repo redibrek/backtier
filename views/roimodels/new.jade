@@ -94,10 +94,16 @@ block content
                       input#valueGCost.form-control(type='number', placeholder='1200', Name='valueGCost', min='1')
                     td
                       input#valueGCdssReduction.form-control(type='number', placeholder='10', Name='valueGCdssReduction', min='1', max='100')
+                      input#creationDate.form-control(type='hidden', Name='creationDate')
         .panel-footer
           .btn-group
-            button.btn.btn-default(type='submit', onclick='this.form.timeField.value=getTimeStamp()') Create
-            input(type='hidden', name='creationDate')
+            button.btn.btn-default(type='submit', onclick='myFunction(event)') Create
     script
         $('#formCreateroimodel').kendoValidator({
         });
+        
+    script.
+        function myFunction(event) {
+          var n = event.timeStamp;
+          document.getElementById('creationDate').value = n
+        }
