@@ -1,0 +1,109 @@
+extends ../layout
+
+block content
+    h2 #{title}
+    
+    form#formUpdateroimodel.form-horizontal(action='/roimodels/#{roimodel._id}/edit', method='post', name='updateroimodel', novalidate, enctype='application/x-www-form-urlencoded')
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title Unique ID: #{roimodel._id}
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='name') ROI Model Name:
+            .col-sm-10
+              input#name.form-control(type='text', Value='#{roimodel.name}', Name='name', required, data-required-msg='A name is required')
+            label.control-label.col-sm-2(for='description') Description:
+            .col-sm-10
+              textarea#description.form-control(type='textarea', Value='#{roimodel.description}', Name='description', required, data-required-msg='A description is required')
+            table.table.table-striped
+              thead
+                tr
+                  th #
+                  th Name
+                  th Quantity
+                  th Cost
+                  th Reduction % Achieved with CDSS
+              tbody
+                tr
+                  th(scope='row') 1
+                    td
+                      input#valueAName.form-control(type='text', Value='#{roimodel.valueAName}', Name='valueAName', required, data-required-msg='A name is required')
+                    td
+                      input#valueAQty.form-control(type='number', Value='#{roimodel.valueAQty}', Name='valueAQty', required, data-required-msg='A quantity is required', min='1')
+                    td
+                      input#valueACost.form-control(type='number', Value='#{roimodel.valueACost}', Name='valueACost', required, data-required-msg='A cost is required', min='1')
+                    td
+                      input#valueACdssReduction.form-control(type='number', Value='#{roimodel.valueACdssReduction}', Name='valueACdssReduction', required, data-required-msg='A % is required between 1 and 100', min='1', max='100')
+                tr
+                  th(scope='row') 2
+                    td
+                      input#valueBName.form-control(type='text', Value='#{roimodel.valueBName}', Name='valueBName', required, data-required-msg='A name is required')
+                    td
+                      input#valueBQty.form-control(type='number', Value='#{roimodel.valueBQty}', Name='valueBQty', min='1')
+                    td
+                      input#valueBCost.form-control(type='number', Value='#{roimodel.valueBCost}', Name='valueBCost', min='1')
+                    td
+                      input#valueBCdssReduction.form-control(type='number', Value='#{roimodel.valueBCdssReduction}', Name='valueBCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 3
+                    td
+                      input#valueCName.form-control(type='text', Value='#{roimodel.valueCName}', Name='valueCName')
+                    td
+                      input#valueCQty.form-control(type='number', Value='#{roimodel.valueCQty}', Name='valueCQty', min='1')
+                    td
+                      input#valueCCost.form-control(type='number', Value='#{roimodel.valueCCost}', Name='valueCCost', min='1')
+                    td
+                      input#valueCCdssReduction.form-control(type='number', Value='#{roimodel.valueCCdssReduction}', Name='valueCCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 4
+                    td
+                      input#valueDName.form-control(type='text', Value='#{roimodel.valueDName}', Name='valueDName')
+                    td
+                      input#valueDQty.form-control(type='number', Value='#{roimodel.valueDQty}', Name='valueDQty', min='1')
+                    td
+                      input#valueDCost.form-control(type='number', Value='#{roimodel.valueDCost}', Name='valueDCost', min='1')
+                    td
+                      input#valueDCdssReduction.form-control(type='number', Value='#{roimodel.valueDCdssReduction}', Name='valueDCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 5
+                    td
+                      input#valueEName.form-control(type='text', Value='#{roimodel.valueEName}', Name='valueEName')
+                    td
+                      input#valueEQty.form-control(type='number', Value='#{roimodel.valueEQty}', Name='valueEQty', min='1')
+                    td
+                      input#valueECost.form-control(type='number', Value='#{roimodel.valueECost}', Name='valueECost', min='1')
+                    td
+                      input#valueECdssReduction.form-control(type='number', Value='#{roimodel.valueECdssReduction}', Name='valueECdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 6
+                    td 
+                      input#valueFName.form-control(type='text', Value='#{roimodel.valueFName}', Name='valueFName')
+                    td
+                      input#valueFQty.form-control(type='number', Value='#{roimodel.valueFQty}', Name='valueFQty', min='1')
+                    td
+                      input#valueFCost.form-control(type='number', Value='#{roimodel.valueFCost}', Name='valueFCost', min='1')
+                    td
+                      input#valueFCdssReduction.form-control(type='number', Value='#{roimodel.valueFCdssReduction}', Name='valueFCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 7
+                    td
+                      input#valueGName.form-control(type='text', Value='#{roimodel.valueGName}', Name='valueGName')
+                    td
+                      input#valueGQty.form-control(type='number', Value='#{roimodel.valueGQty}', Name='valueGQty', min='1')
+                    td
+                      input#valueGCost.form-control(type='number', Value='#{roimodel.valueGCost}', Name='valueGCost', min='1')
+                    td
+                      input#valueGCdssReduction.form-control(type='number', Value='#{roimodel.valueGCdssReduction}', Name='valueGCdssReduction', min='1', max='100')
+        .panel-footer
+          .btn-group
+            form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='PUT',name='_method')
+              button.btn.btn-default(type='submit') Update
+          .btn-group.pull-right
+            form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='DELETE',name='_method')
+              button.btn.btn-danger(type='submit') Delete
+              
+    script
+        $('#formUpdateroimodel').kendoValidator({
+        });

@@ -1,0 +1,103 @@
+extends ../layout
+
+block content
+    h2 New ROI Model Form
+    
+    form#formCreateroimodel.form-horizontal(name='addroimodel', method='post', action='/roimodels', novalidate)
+      .panel.panel-primary
+        .panel-heading  
+          h3.panel-title ROI Model Information
+        .panel-body    
+          .form-group
+            label.control-label.col-sm-2(for='name') ROI Model Name:
+            .col-sm-10
+              input#name.form-control(type='text', placeholder='CT Scan Model', Name='name', required, data-required-msg='A name is required')
+            label.control-label.col-sm-2(for='description') Description:
+            .col-sm-10
+              textarea#description.form-control(type='textarea', placeholder='CT Scan Model Description', Name='description', required, data-required-msg='A description is required')
+            table.table.table-striped
+              thead
+                tr
+                  th #
+                  th Name
+                  th Quantity
+                  th Cost
+                  th Reduction % Achieved with CDSS
+              tbody
+                tr
+                  th(scope='row') 1
+                    td
+                      input#valueAName.form-control(type='text', placeholder='Heart CT Scan', Name='valueAName', required, data-required-msg='A name is required')
+                    td
+                      input#valueAQty.form-control(type='number', placeholder='5', Name='valueAQty', required, data-required-msg='A quantity is required', min='1')
+                    td
+                      input#valueACost.form-control(type='number', placeholder='1200', Name='valueACost', required, data-required-msg='A cost is required', min='1')
+                    td
+                      input#valueACdssReduction.form-control(type='number', placeholder='10', Name='valueACdssReduction', required, data-required-msg='A % is required between 1 and 100', min='1', max='100')
+                tr
+                  th(scope='row') 2
+                    td
+                      input#valueBName.form-control(type='text', placeholder='Heart CT Scan', Name='valueBName', required, data-required-msg='A name is required')
+                    td
+                      input#valueBQty.form-control(type='number', placeholder='5', Name='valueBQty', min='1')
+                    td
+                      input#valueBCost.form-control(type='number', placeholder='1200', Name='valueBCost', min='1')
+                    td
+                      input#valueBCdssReduction.form-control(type='number', placeholder='10', Name='valueBCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 3
+                    td
+                      input#valueCName.form-control(type='text', placeholder='Heart CT Scan', Name='valueCName')
+                    td
+                      input#valueCQty.form-control(type='number', placeholder='5', Name='valueCQty', min='1')
+                    td
+                      input#valueCCost.form-control(type='number', placeholder='1200', Name='valueCCost', min='1')
+                    td
+                      input#valueCCdssReduction.form-control(type='number', placeholder='10', Name='valueCCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 4
+                    td
+                      input#valueDName.form-control(type='text', placeholder='Heart CT Scan', Name='valueDName')
+                    td
+                      input#valueDQty.form-control(type='number', placeholder='5', Name='valueDQty', min='1')
+                    td
+                      input#valueDCost.form-control(type='number', placeholder='1200', Name='valueDCost', min='1')
+                    td
+                      input#valueDCdssReduction.form-control(type='number', placeholder='10', Name='valueDCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 5
+                    td
+                      input#valueEName.form-control(type='text', placeholder='Heart CT Scan', Name='valueEName')
+                    td
+                      input#valueEQty.form-control(type='number', placeholder='5', Name='valueEQty', min='1')
+                    td
+                      input#valueECost.form-control(type='number', placeholder='1200', Name='valueECost', min='1')
+                    td
+                      input#valueECdssReduction.form-control(type='number', placeholder='10', Name='valueECdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 6
+                    td 
+                      input#valueFName.form-control(type='text', placeholder='Heart CT Scan', Name='valueFName')
+                    td
+                      input#valueFQty.form-control(type='number', placeholder='5', Name='valueFQty', min='1')
+                    td
+                      input#valueFCost.form-control(type='number', placeholder='1200', Name='valueFCost', min='1')
+                    td
+                      input#valueFCdssReduction.form-control(type='number', placeholder='10', Name='valueFCdssReduction', min='1', max='100')
+                tr
+                  th(scope='row') 7
+                    td
+                      input#valueGName.form-control(type='text', placeholder='Heart CT Scan', Name='valueGName')
+                    td
+                      input#valueGQty.form-control(type='number', placeholder='5', Name='valueGQty', min='1')
+                    td
+                      input#valueGCost.form-control(type='number', placeholder='1200', Name='valueGCost', min='1')
+                    td
+                      input#valueGCdssReduction.form-control(type='number', placeholder='10', Name='valueGCdssReduction', min='1', max='100')
+        .panel-footer
+          .btn-group
+            button.btn.btn-default(type='submit') Create
+              
+    script
+        $('#formCreateroimodel').kendoValidator({
+        });

@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+    h2 roimodel Details
+    .panel.panel-primary
+      .panel-heading  
+        h3.panel-title #{roimodel.orgname}
+      .panel-body    
+        label.control-label.col-sm-2 Address Line 1:
+        .col-sm-10
+        p #{roimodel.addressLine1}
+        label.control-label.col-sm-2 Address Line 2:
+        .col-sm-10
+        p #{roimodel.addressLine2}
+        label.control-label.col-sm-2 City:
+        .col-sm-10
+        p #{roimodel.city}
+        label.control-label.col-sm-2 State:
+        .col-sm-10
+        p #{roimodel.state}
+        label.control-label.col-sm-2 Post Code:
+        .col-sm-10
+        p #{roimodel.zip}
+        label.control-label.col-sm-2 Unique ID:
+        .col-sm-10
+        p #{roimodel._id}
+      .panel-footer
+        .btn-group(role='group', aria-label='...')
+          button.btn.btn-default(type='button', onclick="location.href='/roimodels';") Show All
+          button.btn.btn-default(type='button', onclick="location.href='/roimodels/#{roimodel._id}/edit';") Edit
+        .btn-group.pull-right
+          form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+            input(type='hidden',value='DELETE',name='_method')
+            button.btn.btn-danger(type='submit') Delete

@@ -161,51 +161,6 @@ router.get('/:id/edit', function (req, res) {
   })
 })
 
-// router.get('/new', function (req, res) {
-//   contact.find({}, function (err, contacts) {
-//     if (err) {
-//       return console.error(err)
-//     } else {
-//       organisation.find({}, function (err, organisations) {
-//         if (err) {
-//           return console.error(err)
-//         } else {
-//             //  res.render('contacts/new', { title: 'Add New contact' })
-//           res.format({
-//             html: function () {
-//               res.render('contacts/new', {
-//                 'contacts': contacts,
-//                 'organisations': organisations
-//               })
-//             }
-//           })
-//         }
-//       })
-//     }
-//   })
-// })
-
-// old function - before adding in organisation seach
-// router.get('/:id/edit', function (req, res) {
-//   mongoose.model('contact').findById(req.id, function (err, contact) {
-//     if (err) {
-//       console.log('GET Error: There was a problem retrieving: ' + err)
-//     } else {
-//       console.log('GET Retrieving ID: ' + contact._id)
-//       res.format({
-//         html: function () {
-//           res.render('contacts/edit', {
-//             'contact': contact
-//           })
-//         },
-//         json: function () {
-//           res.json(contact)
-//         }
-//       })
-//     }
-//   })
-// })
-
 router.put('/:id/edit', function (req, res) {
   var fname = req.body.fname
   var lname = req.body.lname
