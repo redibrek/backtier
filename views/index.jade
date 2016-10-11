@@ -7,9 +7,9 @@ block content
       each contact in contacts
         li
           a(href='/contacts/#{contact._id}')
-            = contact.fname
+            = contact.firstName
             = '\n'
-            = contact.lname
+            = contact.lastName
             = '\n'
             | at 
             = '\n'
@@ -21,7 +21,7 @@ block content
       each organisation in organisations
         li
           a(href='/organisations/#{organisation._id}')
-            = organisation.orgname
+            = organisation.name
 
 
   h3 Current Opportunities
@@ -30,4 +30,4 @@ block content
       each opportunity, i in opportunities
         li
           a(href='/opportunities/#{opportunity._id}')
-              = opportunity.oppname
+              = opportunity.name

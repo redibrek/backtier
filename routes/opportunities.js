@@ -44,16 +44,16 @@ router.route('/')
     // POST a new opportunity
     .post(function (req, res) {
       // Get values from POST request. These can be done through forms or REST calls. These rely on the 'name' attributes for forms
-      var oppname = req.body.oppname
+      var name = req.body.name
       var description = req.body.description
-      var orgname = req.body.orgname
+      var name = req.body.name
       var primarycontactname = req.body.primarycontactname
 
       // call the create function for our database
       mongoose.model('opportunity').create({
-        oppname: oppname,
+        name: name,
         description: description,
-        orgname: orgname,
+        name: name,
         primarycontactname: primarycontactname
       }, function (err, opportunity) {
         if (err) {
@@ -164,9 +164,9 @@ router.get('/:id/edit', function (req, res) {
 // PUT to update a opportunity by ID
 router.put('/:id/edit', function (req, res) {
   // Get our REST or form values. These rely on the 'name' attributes
-  var oppname = req.body.oppname
+  var name = req.body.name
   var description = req.body.description
-  var orgname = req.body.orgname
+  var name = req.body.name
   var primarycontactname = req.body.primarycontactname
 
   // find the document by ID
@@ -176,9 +176,9 @@ router.put('/:id/edit', function (req, res) {
     } else {
       // update it
       opportunity.update({
-        oppname: oppname,
+        name: name,
         description: description,
-        orgname: orgname,
+        name: name,
         primarycontactname: primarycontactname
       }, function (err, opportunityID) {
         if (err) {

@@ -36,15 +36,15 @@ router.route('/')
     })
   })
   .post(function (req, res) {
-    var fname = req.body.fname
-    var lname = req.body.lname
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
     var email = req.body.email
     var phone = req.body.phone
     var organisation = req.body.organisation
 
     mongoose.model('contact').create({
-      fname: fname,
-      lname: lname,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       phone: phone,
       organisation: organisation
@@ -162,8 +162,8 @@ router.get('/:id/edit', function (req, res) {
 })
 
 router.put('/:id/edit', function (req, res) {
-  var fname = req.body.fname
-  var lname = req.body.lname
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
   var email = req.body.email
   var phone = req.body.phone
   var organisation = req.body.organisation
@@ -173,8 +173,8 @@ router.put('/:id/edit', function (req, res) {
       res.send('There was a problem updating the information to the database: ' + err)
     } else {
       contact.update({
-        fname: fname,
-        lname: lname,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         phone: phone,
         organisation: organisation

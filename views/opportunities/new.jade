@@ -9,21 +9,21 @@ block content
           h3.panel-title Opportunity Information
         .panel-body    
           .form-group
-            label.control-label.col-sm-2(for='oppname') Opportunity Name:
+            label.control-label.col-sm-2(for='name') Opportunity Name:
             .col-sm-10
-              input#fname.form-control(type='text', placeholder='e.g. Licence Deal', Name='oppname', class='form-control', required, data-required-msg='First Name is required')
+              input#name.form-control(type='text', placeholder='e.g. Licence Deal', Name='name', class='form-control', required, data-required-msg='A name is required')
           .form-group
             label.control-label.col-sm-2(for='description') Description:
             .col-sm-10
-              textarea#lname.form-control(type='textarea', placeholder='enter some detail about the opportunity', Name='description', class='form-control', required, data-required-msg='Last Name is required')
+              textarea#description.form-control(type='textarea', placeholder='enter some detail about the opportunity', Name='description', class='form-control', required, data-required-msg='A description is required')
           .form-group
-            label.control-label.col-sm-2(for='orgname') Organisation
+            label.control-label.col-sm-2(for='name') Organisation
             .col-sm-10
-              input#email.form-control(type='text', placeholder='someone@email.com', Name='orgname', class='form-control', required, data-required-msg='Email address is required')
+              input#Organisation.form-control(type='text', placeholder='First Org', Name='Organisation', class='form-control', required, data-required-msg='Organisation is required')
           .form-group
             label.control-label.col-sm-2(for='primarycontactname') Primary Contact:
             .col-sm-10
-              input#phone.form-control(type='text', Name='primarycontactname', class='form-control', required, data-required-msg='Phone Number is required')
+              input#primarycontactname.form-control(type='text', Name='primarycontactname', class='form-control', required, data-required-msg='A contact name is required')
         .panel-footer
           .btn-group
               button.btn.btn-default(type='submit') Create

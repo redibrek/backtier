@@ -3,9 +3,9 @@
 var mongoose = require('mongoose')
 
 var opportunitySchema = new mongoose.Schema({
-  oppname: 'string',
+  name: 'string',
   description: 'string',
-  orgname: 'string',
+  name: 'string',
   primarycontactname: 'string',
   creationDate: 'date',
   lastUpdatedDate: 'date'

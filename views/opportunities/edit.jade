@@ -9,17 +9,17 @@ block content
           h3.panel-title Opportunity ID: #{opportunity._id}
         .panel-body    
           .form-group
-            label.control-label.col-sm-2(for='oppname') Opportunity Name:
+            label.control-label.col-sm-2(for='name') Opportunity Name:
             .col-sm-10
-              input#oppname.form-control(type='text', Value='#{opportunity.oppname}', Name='oppname', required, data-required-msg='Opportunity Name is required')
+              input#name.form-control(type='text', Value='#{opportunity.name}', Name='name', required, data-required-msg='Opportunity Name is required')
           .form-group
             label.control-label.col-sm-2(for='description') Description:
             .col-sm-10
               textarea#description.form-control(type='textarea', Value='#{opportunity.description}', Name='description', required, data-required-msg='A description is required')
           .form-group
-            label.control-label.col-sm-2(for='orgname') Organisation:
+            label.control-label.col-sm-2(for='name') Organisation:
             .col-sm-10
-              input#orgname.form-control(type='text', Value='#{opportunity.orgname}', Name='orgname', required, data-required-msg='Please select an organisation')
+              input#name.form-control(type='text', Value='#{opportunity.name}', Name='name', required, data-required-msg='Please select an organisation')
           .form-group
             label.control-label.col-sm-2(for='primarycontactname') Primary Conact:
             .col-sm-10

@@ -9,13 +9,13 @@ block content
           h3.panel-title Contact Information
         .panel-body    
           .form-group
-            label.control-label.col-sm-2(for='fname') First Name:
+            label.control-label.col-sm-2(for='firstName') First Name:
             .col-sm-10
-              input#fname.form-control(type='text', placeholder='John', Name='fname', class='form-control', required, data-required-msg='First Name is required')
+              input#firstName.form-control(type='text', placeholder='John', Name='firstName', class='form-control', required, data-required-msg='First Name is required')
           .form-group
-            label.control-label.col-sm-2(for='lname') Last Name:
+            label.control-label.col-sm-2(for='lastName') Last Name:
             .col-sm-10
-              input#lname.form-control(type='text', placeholder='Smith', Name='lname', class='form-control', required, data-required-msg='Last Name is required')
+              input#lastName.form-control(type='text', placeholder='Smith', Name='lastName', class='form-control', required, data-required-msg='Last Name is required')
           .form-group
             label.control-label.col-sm-2(for='email') Email Address
             .col-sm-10
@@ -29,7 +29,7 @@ block content
             .col-sm-10
               select#organisation.form-control(name='organisation')
                 each organisation in organisations
-                  option #{organisation.orgname}  
+                  option #{organisation.name}  
         .panel-footer
           .btn-group
               button.btn.btn-default(type='submit') Create

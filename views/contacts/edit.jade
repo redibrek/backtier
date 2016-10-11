@@ -9,13 +9,13 @@ block content
           h3.panel-title Contact ID: #{contact._id}
         .panel-body    
           .form-group
-            label.control-label.col-sm-2(for='fname') First Name:
+            label.control-label.col-sm-2(for='firstName') First Name:
             .col-sm-10
-              input#fname.form-control(type='text', Value='#{contact.fname}', Name='fname', required, data-required-msg='First Name is required')
+              input#firstName.form-control(type='text', Value='#{contact.firstName}', Name='firstName', required, data-required-msg='First Name is required')
           .form-group
-            label.control-label.col-sm-2(for='lname') Last Name:
+            label.control-label.col-sm-2(for='lastName') Last Name:
             .col-sm-10
-              input#lname.form-control(type='text', Value='#{contact.lname}', Name='lname', required, data-required-msg='Last Name is required')
+              input#lastName.form-control(type='text', Value='#{contact.lastName}', Name='lastName', required, data-required-msg='Last Name is required')
           .form-group
             label.control-label.col-sm-2(for='email') Email Address
             .col-sm-10
@@ -29,10 +29,10 @@ block content
             .col-sm-10
               select#organisation.form-control(name='organisation', value='#{contact.organisation}')
                 each organisation in organisations
-                  if '#{organisation.orgname}' == '#{contact.organisation}'
-                    option(selected='selected') #{organisation.orgname}  
+                  if '#{organisation.name}' == '#{contact.organisation}'
+                    option(selected='selected') #{organisation.name}  
                   else
-                    option #{organisation.orgname}  
+                    option #{organisation.name}  
         .panel-footer
           .btn-group
             form(action='/contacts/#{contact._id}/edit',method='post',enctype='application/x-www-form-urlencoded')

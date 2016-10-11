@@ -3,7 +3,7 @@
 var mongoose = require('mongoose')
 
 var organisationSchema = new mongoose.Schema({
-  orgname: 'string',
+  name: 'string',
   addressLine1: 'string',
   addressLine2: 'string',
   city: 'string',

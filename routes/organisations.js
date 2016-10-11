@@ -44,7 +44,7 @@ router.route('/')
     // POST a new organisation
     .post(function (req, res) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the 'name' attributes for forms
-      var orgname = req.body.orgname
+      var name = req.body.name
       var addressLine1 = req.body.addressLine1
       var addressLine2 = req.body.addressLine2
       var city = req.body.city
@@ -53,7 +53,7 @@ router.route('/')
 
       // call the create function for our database
       mongoose.model('organisation').create({
-        orgname: orgname,
+        name: name,
         addressLine1: addressLine1,
         addressLine2: addressLine2,
         city: city,
@@ -168,7 +168,7 @@ router.get('/:id/edit', function (req, res) {
 // PUT to update a organisation by ID
 router.put('/:id/edit', function (req, res) {
 // Get our REST or form values. These rely on the 'name' attributes
-  var orgname = req.body.orgname
+  var name = req.body.name
   var addressLine1 = req.body.addressLine1
   var addressLine2 = req.body.addressLine2
   var city = req.body.city
@@ -182,7 +182,7 @@ router.put('/:id/edit', function (req, res) {
     } else {
   // Update it
       organisation.update({
-        orgname: orgname,
+        name: name,
         addressLine1: addressLine1,
         addressLine2: addressLine2,
         city: city,
