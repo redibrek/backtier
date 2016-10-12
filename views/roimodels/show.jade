@@ -93,10 +93,12 @@ block content
           p #{roimodel._id}
           label.control-label.col-sm-2(for='creationDate') Creation Date:
           .col-sm-10
-          p #{roimodel.creationDate}
+          - var formattedCreationDate = new Date(roimodel.creationDate)
+          p #{formattedCreationDate}
           label.control-label.col-sm-2(for='lastUpdatedDate') Last Updated Date:
           .col-sm-10
-          p #{roimodel.lastUpdatedDate}
+          - var formattedLastUpdatedDate = new Date(roimodel.lastUpdatedDate)
+          p #{formattedLastUpdatedDate}
       .panel-footer
         .btn-group(role='group', aria-label='...')
           button.btn.btn-default(type='button', onclick="location.href='/roimodels';") Show All

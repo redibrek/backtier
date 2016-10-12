@@ -33,8 +33,8 @@ var roimodelSchema = new mongoose.Schema({
   valueGQty: 'number',
   valueGCost: 'number',
   valueGCdssReduction: 'number',
-  creationDate: 'date',
-  lastUpdatedDate: 'date'
+  creationDate: 'number',
+  lastUpdatedDate: 'number'
 })
 
 mongoose.model('roimodel', roimodelSchema)

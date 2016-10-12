@@ -6,7 +6,7 @@ block content
     form#formUpdateroimodel.form-horizontal(action='/roimodels/#{roimodel._id}/edit', method='post', name='updateroimodel', novalidate, enctype='application/x-www-form-urlencoded')
       .panel.panel-primary
         .panel-heading  
-          h3.panel-title Unique ID: #{roimodel._id}
+          h3.panel-title Unique ID: #{roimodel._id} #{roimodel.description}
         .panel-body    
           .form-group
             label.control-label.col-sm-2(for='name') ROI Model Name:
@@ -14,7 +14,7 @@ block content
               input#name.form-control(type='text', Value='#{roimodel.name}', Name='name', required, data-required-msg='A name is required')
             label.control-label.col-sm-2(for='description') Description:
             .col-sm-10
-              textarea#description.form-control(type='textarea', Value='#{roimodel.description}', Name='description', required, data-required-msg='A description is required')
+              input#description.form-control(Value='#{roimodel.description}', Name='description', required, data-required-msg='A description is required')
             table.table.table-striped
               thead
                 tr
@@ -37,7 +37,7 @@ block content
                 tr
                   th(scope='row') 2
                     td
-                      input#valueBName.form-control(type='text', Value='#{roimodel.valueBName}', Name='valueBName', required, data-required-msg='A name is required')
+                      input#valueBName.form-control(type='text', Value='#{roimodel.valueBName}', Name='valueBName')
                     td
                       input#valueBQty.form-control(type='number', Value='#{roimodel.valueBQty}', Name='valueBQty', min='1')
                     td
@@ -95,11 +95,12 @@ block content
                     td
                       input#valueGCdssReduction.form-control(type='number', Value='#{roimodel.valueGCdssReduction}', Name='valueGCdssReduction', min='1', max='100')
                       input#lastUpdatedDate.form-control(type='hidden', Name='lastUpdatedDate')
+                      input#creationDate.form-control(type='hidden', Name='creationDate', Value='#{roimodel.creationDate}')
         .panel-footer
           .btn-group
             form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='PUT',name='_method')
-              button.btn.btn-default(type='submit', onclick='myFunction(event)') Update
+              button#update.btn.btn-default(type='submit') Update
           .btn-group.pull-right
             form(action='/roimodels/#{roimodel._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='DELETE',name='_method')
@@ -110,7 +111,8 @@ block content
         });
 
     script.
-        function myFunction(event) {
-          var n = event.timeStamp;
-          document.getElementById('lastUpdatedDate').value = n
-        }
+        $(document).ready(function() {
+          $('#update').click(function() {
+              document.getElementById('lastUpdatedDate').value = $.now();
+          });
+        });

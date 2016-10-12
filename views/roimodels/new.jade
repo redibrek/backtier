@@ -10,11 +10,11 @@ block content
         .panel-body    
           .form-group
             label.control-label.col-sm-2(for='name') ROI Model Name:
-            .col-sm-10
+            .col-sm-2
               input#name.form-control(type='text', placeholder='CT Scan Model', Name='name', required, data-required-msg='A name is required')
             label.control-label.col-sm-2(for='description') Description:
-            .col-sm-10
-              textarea#description.form-control(type='textarea', placeholder='CT Scan Model Description', Name='description', required, data-required-msg='A description is required')
+            .col-sm-6
+              textarea#description.form-control(placeholder='CT Scan Model Description', Name='description', required, data-required-msg='A description is required')
             table.table.table-striped
               thead
                 tr
@@ -37,7 +37,7 @@ block content
                 tr
                   th(scope='row') 2
                     td
-                      input#valueBName.form-control(type='text', placeholder='Heart CT Scan', Name='valueBName', required, data-required-msg='A name is required')
+                      input#valueBName.form-control(type='text', placeholder='Heart CT Scan', Name='valueBName')
                     td
                       input#valueBQty.form-control(type='number', placeholder='5', Name='valueBQty', min='1')
                     td
@@ -97,13 +97,15 @@ block content
                       input#creationDate.form-control(type='hidden', Name='creationDate')
         .panel-footer
           .btn-group
-            button.btn.btn-default(type='submit', onclick='myFunction(event)') Create
+            button#submit.btn.btn-default(type='submit') Create
     script
         $('#formCreateroimodel').kendoValidator({
         });
         
     script.
-        function myFunction(event) {
-          var n = event.timeStamp;
-          document.getElementById('creationDate').value = n
-        }
+        $(document).ready(function() {
+          $('#submit').click(function() {
+              document.getElementById('creationDate').value = $.now();
+          });
+        });
+        
