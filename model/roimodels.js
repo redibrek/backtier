@@ -5,6 +5,7 @@ var mongoose = require('mongoose')
 var roimodelSchema = new mongoose.Schema({
   name: 'string',
   description: 'string',
+  currency: 'string',
   valueAName: 'string',
   valueAQty: 'number',
   valueACost: 'number',

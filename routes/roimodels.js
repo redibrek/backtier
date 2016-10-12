@@ -46,6 +46,7 @@ router.route('/')
         // Get values from POST request. These can be done through forms or REST calls. These rely on the 'name' attributes for forms
       var name = req.body.name
       var description = req.body.description
+      var currency = req.body.currency
       var valueAName = req.body.valueAName
       var valueAQty = req.body.valueAQty
       var valueACost = req.body.valueACost
@@ -81,6 +82,7 @@ router.route('/')
       mongoose.model('roimodel').create({
         name: name,
         description: description,
+        currency: currency,
         valueAName: valueAName,
         valueAQty: valueAQty,
         valueACost: valueACost,
@@ -224,6 +226,7 @@ router.put('/:id/edit', function (req, res) {
 // Get our REST or form values. These rely on the 'name' attributes
   var name = req.body.name
   var description = req.body.description
+  var currency = req.body.currency
   var valueAName = req.body.valueAName
   var valueAQty = req.body.valueAQty
   var valueACost = req.body.valueACost
@@ -264,6 +267,7 @@ router.put('/:id/edit', function (req, res) {
       roimodel.update({
         name: name,
         description: description,
+        currency: currency,
         valueAName: valueAName,
         valueAQty: valueAQty,
         valueACost: valueACost,

@@ -6,6 +6,8 @@ block content
             button.btn.btn-default(type='button', onclick="location.href='/roimodels/new';") New ROI Model    
 
     - each roimodel, i in roimodels
+
+        p there are #{roimodel.name.length} values in this array
         .panel.panel-primary
           .panel-heading
             h3.panel-title  
@@ -18,83 +20,138 @@ block content
                   th #
                   th Name
                   th Quantity
-                  th Cost
+                  th Cost per Scan
                   th Reduction%  Achieved with CDSS
+                  th Total Saving (#{roimodel.currency})
               tbody
                 tr
                   th(scope='row') 1
                     td
                       p #{roimodel.valueAName}
                     td
-                      p #{roimodel.valueAQty}
+                      p #{roimodel.valueAQty.toLocaleString()}
                     td
-                      p #{roimodel.valueACost}
+                      p #{roimodel.currency}#{roimodel.valueACost.toLocaleString()}
                     td
-                      p #{roimodel.valueACdssReduction}
-                tr
-                  th(scope='row') 2
+                      p #{roimodel.valueACdssReduction.toLocaleString()}
                     td
-                      p #{roimodel.valueBName}
+                      - var valueASaving =  (roimodel.valueAQty * roimodel.valueACost * (roimodel.valueACdssReduction/100))
+                      - var totalSaving = valueASaving
+                      p #{valueASaving.toLocaleString()}
+                if roimodel.valueBName !== ''
+                  tr
+                    th(scope='row') 2
+                      td
+                        p #{roimodel.valueBName}
+                      td
+                        p #{roimodel.valueBQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueBCost.toLocaleString()}
+                      td
+                        p #{roimodel.valueBCdssReduction}
+                      td
+                        - var valueBSaving =  (roimodel.valueBQty * roimodel.valueBCost * (roimodel.valueBCdssReduction/100))
+                        - var totalSaving = totalSaving + valueBSaving
+                        p #{valueBSaving.toLocaleString()}
+                else
+                if roimodel.valueCName !== ''
+                  tr
+                    th(scope='row') 3
+                      td
+                        p #{roimodel.valueCName}
+                      td
+                        p #{roimodel.valueCQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueCCost.toLocaleString()}
+                      td
+                        p #{roimodel.valueCCdssReduction}
+                      td
+                        - var valueCSaving =  (roimodel.valueCQty * roimodel.valueCCost * (roimodel.valueCCdssReduction/100))
+                        - var totalSaving = totalSaving + valueCSaving
+                        p #{valueCSaving.toLocaleString()}
+                else
+                if roimodel.valueDName !== ''
+                  tr
+                    th(scope='row') 4
+                      td
+                        p #{roimodel.valueDName}
+                      td
+                        p #{roimodel.valueDQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueDCost.toLocaleString()}
+                      td
+                        p #{roimodel.valueDCdssReduction}
+                      td
+                        - var valueDSaving =  (roimodel.valueDQty * roimodel.valueDCost * (roimodel.valueDCdssReduction/100))
+                        - var totalSaving = totalSaving + valueDSaving
+                        p #{valueDSaving.toLocaleString()}
+                else
+                if roimodel.valueEName !== ''
+                  tr
+                    th(scope='row') 5
+                      td
+                        p #{roimodel.valueEName}
+                      td
+                        p #{roimodel.valueEQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueECost.toLocaleString()}
+                      td
+                        p #{roimodel.valueECdssReduction}
+                      td
+                        - var valueESaving =  (roimodel.valueEQty * roimodel.valueECost * (roimodel.valueECdssReduction/100))
+                        - var totalSaving = totalSaving + valueESaving
+                        p #{valueESaving.toLocaleString()}
+                else
+                if roimodel.valueFName !== ''
+                  tr
+                    th(scope='row') 6
+                      td
+                        p #{roimodel.valueFName}
+                      td
+                        p #{roimodel.valueFQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueFCost.toLocaleString()}
+                      td
+                        p #{roimodel.valueFCdssReduction}
+                      td
+                        - var valueFSaving =  (roimodel.valueFQty * roimodel.valueFCost * (roimodel.valueFCdssReduction/100))
+                        - var totalSaving = totalSaving + valueFSaving
+                        p #{valueFSaving.toLocaleString()}
+                else
+                if roimodel.valueGName !== ''
+                  tr
+                    th(scope='row') 7
+                      td
+                        p #{roimodel.valueGName}
+                      td
+                        p #{roimodel.valueGQty.toLocaleString()}
+                      td
+                        p #{roimodel.currency}#{roimodel.valueGCost.toLocaleString()}
+                      td
+                        p #{roimodel.valueGCdssReduction}
+                      td
+                        - var valueGSaving =  (roimodel.valueGQty * roimodel.valueGCost * (roimodel.valueGCdssReduction/100))
+                        - var totalSaving = totalSaving + valueGSaving
+                        p #{valueGSaving.toLocaleString()}
+                else
+                tr.bg-primary
+                  th(scope='row')
                     td
-                      p #{roimodel.valueBQty}
+                      b
+                        p TOTALS / AVERAGES
                     td
-                      p #{roimodel.valueBCost}
+                      b
+                        - var totalQty = roimodel.valueAQty + roimodel.valueBQty + roimodel.valueCQty + roimodel.valueDQty + roimodel.valueEQty + roimodel.valueFQty + roimodel.valueGQty
+                        p #{totalQty.toLocaleString()}
                     td
-                      p #{roimodel.valueBCdssReduction}
-
-                tr
-                  th(scope='row') 3
+                      b
+                      - var modelLength = roimodel.length
+                      p #{modelLength}
                     td
-                      p #{roimodel.valueCName}
+                      p 
                     td
-                      p #{roimodel.valueCQty}
-                    td
-                      p #{roimodel.valueCCost}
-                    td
-                      p #{roimodel.valueCCdssReduction}
-
-                tr
-                  th(scope='row') 4
-                    td
-                      p #{roimodel.valueDName}
-                    td
-                      p #{roimodel.valueDQty}
-                    td
-                      p #{roimodel.valueDCost}
-                    td
-                      p #{roimodel.valueDCdssReduction}
-
-                tr
-                  th(scope='row') 5
-                    td
-                      p #{roimodel.valueEName}
-                    td
-                      p #{roimodel.valueEQty}
-                    td
-                      p #{roimodel.valueECost}
-                    td
-                      p #{roimodel.valueECdssReduction}
-
-                tr
-                  th(scope='row') 6
-                    td
-                      p #{roimodel.valueFName}
-                    td
-                      p #{roimodel.valueFQty}
-                    td
-                      p #{roimodel.valueFCost}
-                    td
-                      p #{roimodel.valueFCdssReduction}
-                tr
-                  th(scope='row') 7
-                    td
-                      p #{roimodel.valueGName}
-                    td
-                      p #{roimodel.valueGQty}
-                    td
-                      p #{roimodel.valueGCost}
-                    td
-                      p #{roimodel.valueGCdssReduction}
+                      b
+                        p #{totalSaving.toLocaleString()}
             label.control-label.col-sm-2(for='creationDate') Creation Date:
             .col-sm-10
             - var formattedCreationDate = new Date(roimodel.creationDate)

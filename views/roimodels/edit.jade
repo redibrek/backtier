@@ -15,6 +15,13 @@ block content
             label.control-label.col-sm-2(for='description') Description:
             .col-sm-10
               input#description.form-control(Value='#{roimodel.description}', Name='description', required, data-required-msg='A description is required')
+            label.control-label.col-sm-2(for='currency') Currency Format:
+            .col-sm-2
+              select#currency.form-control(name='currency')
+                option(value='£') £ - GBP
+                option(value='€') € - Euro
+                option(value='$') $ - USD
+                option(value='Can$') $ - Canadian Dollar
             table.table.table-striped
               thead
                 tr
